@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { 
-  DollarSign, 
+  IndianRupee, 
   ShoppingCart, 
   Package, 
   AlertTriangle, 
@@ -47,9 +47,9 @@ const ExecutiveDashboard: React.FC = () => {
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard 
-          icon={<DollarSign size={24} />} 
+          icon={<IndianRupee size={24} />} 
           label="TOTAL REVENUE" 
-          value="$12,450.00" 
+          value="₹12,450.00" 
           color="border-emerald-500" 
           iconBg="bg-emerald-50" 
           iconColor="text-emerald-600"
@@ -113,7 +113,7 @@ const ExecutiveDashboard: React.FC = () => {
                     <tr key={act.id} className="hover:bg-slate-50/50 transition-colors">
                       <td className="px-6 py-4 font-semibold text-slate-800">{act.customer}</td>
                       <td className="px-6 py-4 text-slate-600">{act.product}</td>
-                      <td className="px-6 py-4 font-mono font-bold text-slate-900">${act.amount.toFixed(2)}</td>
+                      <td className="px-6 py-4 font-mono font-bold text-slate-900">₹{act.amount.toFixed(2)}</td>
                       <td className="px-6 py-4">
                         <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight ${
                           act.status === 'Completed' ? 'bg-emerald-50 text-emerald-600' : 

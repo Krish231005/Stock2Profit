@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import DashboardLayout from './components/DashboardLayout';
 import ExecutiveDashboard from './components/ExecutiveDashboard';
 import InventoryView from './components/InventoryView';
+import AuthView from './components/AuthView';
 import { AppView } from './types';
 
 const App: React.FC = () => {
@@ -17,7 +18,30 @@ const App: React.FC = () => {
   const renderView = () => {
     switch (currentView) {
       case AppView.LANDING:
-        return <LandingPage onStartTrial={() => navigateTo(AppView.DASHBOARD)} />;
+        return (
+          <LandingPage 
+            onStartTrial={() => navigateTo(AppView.SIGNUP)} 
+            onLogin={() => navigateTo(AppView.LOGIN)} 
+          />
+        );
+      case AppView.LOGIN:
+        return (
+          <AuthView 
+            mode="login" 
+            onAuthSuccess={() => navigateTo(AppView.DASHBOARD)} 
+            onSwitch={() => navigateTo(AppView.SIGNUP)}
+            onBack={() => navigateTo(AppView.LANDING)}
+          />
+        );
+      case AppView.SIGNUP:
+        return (
+          <AuthView 
+            mode="signup" 
+            onAuthSuccess={() => navigateTo(AppView.DASHBOARD)} 
+            onSwitch={() => navigateTo(AppView.LOGIN)}
+            onBack={() => navigateTo(AppView.LANDING)}
+          />
+        );
       case AppView.DASHBOARD:
         return (
           <DashboardLayout currentView={currentView} onNavigate={navigateTo}>

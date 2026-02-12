@@ -119,7 +119,7 @@ const InventoryView: React.FC = () => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 font-bold text-slate-900">${item.price.toFixed(2)}</td>
+                  <td className="px-4 py-4 font-bold text-slate-900">₹{item.price.toFixed(2)}</td>
                   <td className="px-4 py-4">
                     <button className="text-blue-600 font-bold hover:underline">Edit</button>
                   </td>

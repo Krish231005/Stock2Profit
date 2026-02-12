@@ -8,24 +8,25 @@ import {
   Bell, 
   ShieldCheck, 
   ArrowRight,
-  CheckCircle
+  TrendingUpDown
 } from 'lucide-react';
 
 interface LandingPageProps {
   onStartTrial: () => void;
+  onLogin: () => void;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial }) => {
+const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial, onLogin }) => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-slate-800 p-1.5 rounded">
-              <span className="text-white font-bold text-lg">H5</span>
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+            <div className="bg-emerald-600 p-1.5 rounded-lg shadow-sm shadow-emerald-200">
+              <TrendingUpDown size={20} className="text-white" />
             </div>
-            <span className="text-slate-800 font-bold text-xl tracking-tight">ERP</span>
+            <span className="text-slate-800 font-bold text-xl tracking-tight">Stock2<span className="text-emerald-600">Profit</span></span>
           </div>
           
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
@@ -35,10 +36,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial }) => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="text-slate-600 font-medium hover:text-slate-900 transition-colors">Sign In</button>
+            <button 
+              onClick={onLogin}
+              className="text-slate-600 font-medium hover:text-slate-900 transition-colors"
+            >
+              Sign In
+            </button>
             <button 
               onClick={onStartTrial}
-              className="bg-slate-800 text-white px-5 py-2 rounded-lg font-semibold hover:bg-slate-700 transition-all shadow-sm active:scale-95"
+              className="bg-emerald-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-all shadow-sm active:scale-95"
             >
               Start Free Trial
             </button>
@@ -50,21 +56,21 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial }) => {
       <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-            Manage Your Business <br />
-            <span className="text-teal-600">All in One Place</span>
+            Manage Your Inventory <br />
+            <span className="text-emerald-600">Boost Your Profit</span>
           </h1>
           <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-            Streamline your sales, inventory, billing, and supply chain operations with our powerful business management platform.
+            Streamline your sales, inventory, and billing with our powerful platform designed to turn your stock into maximum profit.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={onStartTrial}
-              className="bg-slate-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-700 transition-all shadow-lg active:scale-95"
+              className="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-lg active:scale-95"
             >
-              Start Free Trial
+              Get Started Now
             </button>
             <button className="bg-white text-slate-800 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all shadow-sm">
-              Learn More
+              Watch Demo
             </button>
           </div>
         </div>
@@ -74,40 +80,40 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial }) => {
       <section id="features" className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Powerful Features for Your Business</h2>
-            <p className="text-slate-500">Everything you need to run your business efficiently</p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Powerful Features for Your Growth</h2>
+            <p className="text-slate-500">The tools you need to transition from stock management to profit generation</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard 
-              icon={<TrendingUp className="text-teal-600" size={32} />}
+              icon={<TrendingUp className="text-emerald-600" size={32} />}
               title="Sales Management"
-              description="Track and manage all your sales transactions in one place with real-time analytics and reporting."
+              description="Track every transaction and gain insights into your best-performing products in real-time."
             />
             <FeatureCard 
-              icon={<Package className="text-teal-600" size={32} />}
-              title="Inventory Control"
-              description="Keep your inventory organized with automated stock tracking, low stock alerts, and efficient management."
+              icon={<Package className="text-emerald-600" size={32} />}
+              title="Inventory Optimization"
+              description="Automated tracking ensures you never run out of top sellers or tie up capital in dead stock."
             />
             <FeatureCard 
-              icon={<CreditCard className="text-teal-600" size={32} />}
-              title="Billing System"
-              description="Generate professional invoices and bills instantly with customizable templates and automated calculations."
+              icon={<CreditCard className="text-emerald-600" size={32} />}
+              title="Instant Billing"
+              description="Generate professional invoices and receipts in seconds, ensuring your cash flow stays healthy."
             />
             <FeatureCard 
-              icon={<Users className="text-teal-600" size={32} />}
-              title="Supply Chain"
-              description="Manage suppliers, track orders, and maintain seamless supply chain operations effortlessly."
+              icon={<Users className="text-emerald-600" size={32} />}
+              title="Supplier Network"
+              description="Centralize your supply chain contacts and purchase orders for seamless restock operations."
             />
             <FeatureCard 
-              icon={<Bell className="text-teal-600" size={32} />}
-              title="Smart Notifications"
-              description="Stay updated with instant notifications for important events, low stock, and pending tasks."
+              icon={<Bell className="text-emerald-600" size={32} />}
+              title="Proactive Alerts"
+              description="Smart notifications for low stock, pending payments, and critical business milestones."
             />
             <FeatureCard 
-              icon={<ShieldCheck className="text-teal-600" size={32} />}
-              title="Secure & Reliable"
-              description="Your data is protected with enterprise-grade security and automatic backups."
+              icon={<ShieldCheck className="text-emerald-600" size={32} />}
+              title="Secure Data"
+              description="Rest easy knowing your financial and inventory data is protected by enterprise-grade encryption."
             />
           </div>
         </div>
@@ -117,29 +123,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial }) => {
       <section id="how-it-works" className="py-24 px-4 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">How It Works</h2>
-            <p className="text-slate-500">Get started in 4 simple steps</p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">The Path to Profit</h2>
+            <p className="text-slate-500">Simplicity is at the core of our platform</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 relative">
-            <StepCard number="01" title="Sign Up" description="Create your free account in seconds with email or Google sign-in." />
-            <StepCard number="02" title="Set Up Your Business" description="Add your business details, products, and inventory to get started." />
-            <StepCard number="03" title="Start Managing" description="Begin tracking sales, managing inventory, and generating reports instantly." />
-            <StepCard number="04" title="Grow & Scale" description="Use insights and analytics to make data-driven decisions and scale your business." />
+            <StepCard number="01" title="Onboard" description="Set up your account and define your business parameters in minutes." />
+            <StepCard number="02" title="Catalog Stock" description="Import your existing inventory and organize it by category and SKU." />
+            <StepCard number="03" title="Process Sales" description="Use our intuitive dashboard to handle daily sales and generate bills." />
+            <StepCard number="04" title="Analyze & Grow" description="Use automated reports to identify profit trends and scale your operations." />
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-4 bg-[#0a3d54] text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-slate-300 mb-10 text-xl">Join thousands of businesses already using H5 ERP</p>
+      <section className="py-24 px-4 bg-emerald-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl font-bold mb-6">Stop Just Managing. Start Profiting.</h2>
+          <p className="text-emerald-100 mb-10 text-xl">Join the community of efficient businesses using Stock2Profit.</p>
           <button 
             onClick={onStartTrial}
-            className="bg-white text-slate-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all flex items-center gap-2 mx-auto active:scale-95 shadow-xl"
+            className="bg-white text-emerald-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all flex items-center gap-2 mx-auto active:scale-95 shadow-xl"
           >
-            Get Started Now
+            Join Stock2Profit
             <ArrowRight size={20} />
           </button>
         </div>
@@ -150,21 +157,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartTrial }) => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-between items-center gap-8 pb-12">
             <div className="flex items-center gap-2">
-              <div className="bg-white p-1 rounded">
-                <span className="text-slate-900 font-bold text-sm">H5</span>
+              <div className="bg-emerald-600 p-1 rounded-lg">
+                <TrendingUpDown size={16} className="text-white" />
               </div>
-              <span className="text-white font-bold text-lg">ERP</span>
+              <span className="text-white font-bold text-lg">Stock2<span className="text-emerald-500">Profit</span></span>
             </div>
             <div className="flex gap-8 text-sm font-medium">
-              <a href="#" className="hover:text-white">Dashboard</a>
-              <a href="#" className="hover:text-white">Inventory</a>
-              <a href="#" className="hover:text-white">Sales</a>
-              <a href="#" className="hover:text-white">Bills</a>
-              <a href="#" className="hover:text-white">Reports</a>
+              <a href="#" className="hover:text-white">Product</a>
+              <a href="#" className="hover:text-white">Security</a>
+              <a href="#" className="hover:text-white">Company</a>
+              <a href="#" className="hover:text-white">Resources</a>
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-            <p>&copy; 2026 H5 ERP. Student Project - Not a business.</p>
+            <p>&copy; 2026 Stock2Profit. Streamlined Business Excellence.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-white">Privacy Policy</a>
               <a href="#" className="hover:text-white">Terms of Service</a>
@@ -187,7 +193,7 @@ const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; description:
 const StepCard: React.FC<{ number: string; title: string; description: string }> = ({ number, title, description }) => (
   <div className="text-center group">
     <div className="relative inline-block mb-6">
-      <div className="w-16 h-16 bg-[#0a3d54] rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
+      <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform shadow-lg shadow-emerald-200">
         {number}
       </div>
       {number !== "04" && (

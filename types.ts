@@ -7,7 +7,9 @@ export enum AppView {
   BILLING = 'BILLING',
   SUPPLIERS = 'SUPPLIERS',
   REPORTS = 'REPORTS',
-  PROFILE = 'PROFILE'
+  PROFILE = 'PROFILE',
+  LOGIN = 'LOGIN',
+  SIGNUP = 'SIGNUP'
 }
 
 export interface Activity {
