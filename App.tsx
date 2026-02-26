@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import DashboardLayout from './components/DashboardLayout';
 import ExecutiveDashboard from './components/ExecutiveDashboard';
 import InventoryView from './components/InventoryView';
+import SalesView from './components/SalesView';
 import AuthView from './components/AuthView';
 import { AppView } from './types';
 
@@ -52,6 +53,12 @@ const App: React.FC = () => {
         return (
           <DashboardLayout currentView={currentView} onNavigate={navigateTo}>
             <InventoryView />
+          </DashboardLayout>
+        );
+      case AppView.SALES:
+        return (
+          <DashboardLayout currentView={currentView} onNavigate={navigateTo}>
+            <SalesView />
           </DashboardLayout>
         );
       default:
